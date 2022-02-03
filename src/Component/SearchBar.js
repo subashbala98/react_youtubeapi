@@ -1,4 +1,5 @@
 import React from "react";
+// Functional component
 export default class SearchBar extends React.Component {
   state = { userSearch: "" };
   onSubmitForm = (e) => {
