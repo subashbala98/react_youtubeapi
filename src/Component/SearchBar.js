@@ -1,26 +1,24 @@
-import React from "react";
-// Functional component
-export default class SearchBar extends React.Component {
-  state = { userSearch: "" };
-  onSubmitForm = (e) => {
+import React, { useState } from "react";
+const SearchBar = ({ searchVideo }) => {
+  const [text, setText] = useState("");
+  const onSubmitForm = (e) => {
     e.preventDefault();
-    this.props.searchVideo(this.state.userSearch);
+    searchVideo(text);
   };
-  render() {
-    return (
-      <div className="ui segment ui_alignment">
-        <form onSubmit={this.onSubmitForm} className="ui form">
-          <label>Search Videos: </label>
-          <div className="ui fluid icon input">
-            <input
-              type="text"
-              value={this.state.userSearch}
-              onChange={(e) => this.setState({ userSearch: e.target.value })}
-            />
-            <i className="search icon"></i>
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="ui segment ui_alignment">
+      <form onSubmit={onSubmitForm} className="ui form">
+        <label>Search Videos: </label>
+        <div className="ui fluid icon input">
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <i className="search icon"></i>
+        </div>
+      </form>
+    </div>
+  );
+};
+export default SearchBar;
